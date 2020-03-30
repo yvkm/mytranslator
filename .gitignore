@@ -1,0 +1,5 @@
+*.iml
+out/
+translation.properties
+.idea
+lib/

@@ -1,0 +1,35 @@
+<idea-plugin>
+  <id>com.github.yvkm.plugin.Bootstrap</id>
+  <name>MyTranslator</name>
+  <version>1.0.0</version>
+  <vendor email="xiejianxun@outlook.com" url="none"/>
+
+  <description>Simple translator translate English into Chinese</description>
+
+  <change-notes>this project is under developing,it is not stable</change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <depends>com.intellij.modules.platform</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- 动作 对应的类-->
+    <action id="translateSelectText"
+            class="com.github.yvkm.plugin.Bootstrap"
+            text="Translator">
+      <!--  添加到哪个菜单-->
+      <add-to-group group-id="WindowMenu" anchor="first"/>
+      <!--  快捷键-->
+      <keyboard-shortcut first-keystroke="ctrl shift f" keymap="$default"/>
+    </action>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
