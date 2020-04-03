@@ -1,12 +1,16 @@
 <idea-plugin>
   <id>com.github.yvkm.plugin.Bootstrap</id>
   <name>MyTranslator</name>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <vendor email="xiejianxun@outlook.com" url="none"/>
 
   <description>Simple translator translate English into Chinese</description>
 
-  <change-notes>this project is under developing,it is not stable</change-notes>
+  <change-notes>
+    this project is under developing,it is not stable
+    1.0.1 修复单词中出现双引号的错误
+    1.1.0 添加中英语互译支持
+  </change-notes>
 
   <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
   <idea-version since-build="173.0"/>
@@ -27,7 +31,7 @@
       <!--  添加到哪个菜单-->
       <add-to-group group-id="WindowMenu" anchor="first"/>
       <!--  快捷键-->
-      <keyboard-shortcut first-keystroke="ctrl shift f" keymap="$default"/>
+      <keyboard-shortcut first-keystroke="alt shift f" keymap="$default"/>
     </action>
     <!-- Add your actions here -->
   </actions>

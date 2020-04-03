@@ -2,6 +2,8 @@ package com.github.yvkm.plugin.tencentImpl;
 
 import com.github.yvkm.plugin.AbstractTranslator;
 import com.github.yvkm.plugin.Order;
+import com.github.yvkm.plugin.TextProcessUtil;
+import com.google.gson.Gson;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;
 import com.tencentcloudapi.common.profile.ClientProfile;
@@ -12,7 +14,11 @@ import com.tencentcloudapi.tmt.v20180321.models.TextTranslateResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
+
 /**
+ * https://cloud.tencent.com/document/api/551/15619
+ *
  * @author xie jian xun
  * @since
  */
@@ -36,14 +42,24 @@ public class TencentTranslator extends AbstractTranslator {
     }
 
     @Override
-    public String translate(String sText) throws TencentCloudSDKException {
-        final String text = process(sText);
+    public String translate(String rawText) throws TencentCloudSDKException {
+        final String text = process(rawText);
 
+        boolean isChinese = TextProcessUtil.isChinese(text);
+        String source = isChinese ? "zh" : "en";
+        String target = isChinese ? "en" : "zh";
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("SourceText", text);
+        map.put("Source", source);
+        map.put("Target", target);
+        map.put("ProjectId",0);
+
+        String params = new Gson().toJson(map);
+/*
         String params = "{\"SourceText\":\"" + text + "\",\"Source\":\"en" +
-            "\",\"Target\":\"zh\",\"ProjectId\":0}";
-        log.trace("请求参数：{}", params);
-        TextTranslateRequest req = TextTranslateRequest.fromJsonString(params, TextTranslateRequest.class);
+            "\",\"Target\":\"zh\",\"ProjectId\":0}";*/
 
+        TextTranslateRequest req = TextTranslateRequest.fromJsonString(params, TextTranslateRequest.class);
         TextTranslateResponse resp = client.TextTranslate(req);
 
         return resp.getTargetText();

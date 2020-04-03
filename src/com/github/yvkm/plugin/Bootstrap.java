@@ -29,21 +29,16 @@ public class Bootstrap extends AnAction {
     public void actionPerformed(@NotNull AnActionEvent anActionEvent) {
         Editor editor = anActionEvent.getData(PlatformDataKeys.EDITOR);
         if (editor == null) {
-            log.error("Cannot get IDEA build-in object: PlatformDataKeys" +
-                ".EDITOR");
+            log.error("Cannot get IDEA build-in object: PlatformDataKeys.EDITOR");
             return;
-
         }
         String sText = editor.getSelectionModel().getSelectedText();
-
-        log.trace("Request translate text: {}", sText);
 
         try {
             if(translator == null) {
                translator = TranslatorFactory.getTranslator();
             }
             String translated = translator.translate(sText);
-
             showTip(translated, editor);
         } catch (Exception e) {
             showTip("Translate error :" + e.getMessage(), editor);
@@ -55,6 +50,7 @@ public class Bootstrap extends AnAction {
             .createHtmlTextBalloonBuilder(msg, Messages.getInformationIcon(),
                 new JBColor(new Color(214, 241, 255), Gray._43)
                 , null)
+            .setTitle("翻译结果")
             .setFadeoutTime(60000)  // 自动退出时间
             .setHideOnAction(true)  // 离开后退出
             .createBalloon()

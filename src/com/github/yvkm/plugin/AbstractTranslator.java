@@ -7,6 +7,13 @@ package com.github.yvkm.plugin;
  */
 public abstract class AbstractTranslator implements Translator {
 
+    private static final String COMMENT = "/|\\*";
+    private static final String JAVADOC =
+        "\\#|\\{@[a-zA-Z]+|\\}|</?[a-z]+?>";
+    private static final String OTHER = "\"|_";
+    public static final String REPLACE_PATTERN =
+        COMMENT + "|" + JAVADOC + "|" + OTHER;
+
     /**
      * 将指定的英文翻译成中文
      *
@@ -23,26 +30,9 @@ public abstract class AbstractTranslator implements Translator {
      * @return
      */
     protected String process(String rawText) {
-        String trimmedText = rawText.trim();
-        if(isOneWord(trimmedText)) {
-            return  camelCaseToMultiWord(trimmedText);
-        }
-
-        String replacedText = trimmedText.replaceAll("\\{|\\}|@[a-zA-Z]+|\\<.*\\>|#|\\*", " ")
-                .replaceAll("\\s+", " ");
-        return replacedText;
+        return TextProcessUtil.replace(rawText, REPLACE_PATTERN,
+            " ");
     }
 
-    protected   boolean isOneWord(String text)  {
-        return !text.contains(" ");
-    }
 
-    protected String camelCaseToMultiWord(String camelCase) {
-        StringBuilder stringBuilder = new StringBuilder();
-        String[] splitWords = camelCase.split("(?<!(^|[A-Z]))(?=[A-Z])|(?<!^)(?=[A-Z][a-z])");
-        for (String splitWord : splitWords) {
-            stringBuilder.append(splitWord).append(" ");
-        }
-        return stringBuilder.toString();
-    }
 }
