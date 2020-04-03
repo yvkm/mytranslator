@@ -2,7 +2,7 @@ package com.github.yvkm.plugin.tencentImpl;
 
 import com.github.yvkm.plugin.AbstractTranslator;
 import com.github.yvkm.plugin.Order;
-import com.github.yvkm.plugin.TextProcessUtil;
+import com.github.yvkm.plugin.util.TextProcessUtil;
 import com.google.gson.Gson;
 import com.tencentcloudapi.common.Credential;
 import com.tencentcloudapi.common.exception.TencentCloudSDKException;

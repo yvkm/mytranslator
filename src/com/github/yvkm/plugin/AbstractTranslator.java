@@ -1,6 +1,8 @@
 package com.github.yvkm.plugin;
 
 
+import com.github.yvkm.plugin.util.TextProcessUtil;
+
 /**
  * @author xie jian xun
  * @since

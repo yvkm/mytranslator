@@ -1,4 +1,4 @@
-package com.github.yvkm.plugin;
+package com.github.yvkm.plugin.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -7,7 +7,6 @@ import java.util.regex.Pattern;
  * @author Xie Jian Xun
  */
 public class TextProcessUtil {
-
 
     /**
      * 对指定的文本进行替换

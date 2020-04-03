@@ -1,6 +1,8 @@
 package com.github.yvkm.plugin;
 
 
+import com.github.yvkm.plugin.util.ServiceLoader;
+
 import javax.management.ServiceNotFoundException;
 import java.util.Comparator;
 import java.util.List;

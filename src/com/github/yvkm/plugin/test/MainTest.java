@@ -1,8 +1,8 @@
 package com.github.yvkm.plugin.test;
 
 import com.github.yvkm.plugin.AbstractTranslator;
-import com.github.yvkm.plugin.ServiceLoader;
-import com.github.yvkm.plugin.TextProcessUtil;
+import com.github.yvkm.plugin.util.ServiceLoader;
+import com.github.yvkm.plugin.util.TextProcessUtil;
 import com.github.yvkm.plugin.Translator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

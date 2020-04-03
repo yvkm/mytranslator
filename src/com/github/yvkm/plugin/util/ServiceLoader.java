@@ -1,4 +1,6 @@
-package com.github.yvkm.plugin;
+package com.github.yvkm.plugin.util;
+
+import com.github.yvkm.plugin.Translator;
 
 import javax.management.ServiceNotFoundException;
 import java.io.*;
