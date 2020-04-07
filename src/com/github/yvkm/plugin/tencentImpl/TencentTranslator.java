@@ -55,9 +55,6 @@ public class TencentTranslator extends AbstractTranslator {
         map.put("ProjectId",0);
 
         String params = new Gson().toJson(map);
-/*
-        String params = "{\"SourceText\":\"" + text + "\",\"Source\":\"en" +
-            "\",\"Target\":\"zh\",\"ProjectId\":0}";*/
 
         TextTranslateRequest req = TextTranslateRequest.fromJsonString(params, TextTranslateRequest.class);
         TextTranslateResponse resp = client.TextTranslate(req);
